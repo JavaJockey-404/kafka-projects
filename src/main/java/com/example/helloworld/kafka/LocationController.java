@@ -39,7 +39,7 @@ public class LocationController {
         try {
             String message = objectMapper.writeValueAsString(location);
             producer.sendMessage(location.getLatitude() + "," + location.getLongitude(), message);
-            return ResponseEntity.accepted().body("Location sent to Kafka.");
+            return ResponseEntity.accepted().body("Location sent to Kafka-server");
         } catch (JsonProcessingException | ExecutionException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Could not send location to Kafka.", e);
         } catch (InterruptedException e) {
